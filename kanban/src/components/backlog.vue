@@ -27,16 +27,6 @@ export default {
     return {
       status: 'backlog'
     }
-  },
-  firebase () {
-    return {
-      backlog: this.$db.ref('kanban/backlog/')
-    }
-  },
-  methods: {
-    getData (log) {
-      this.dataTask = log
-    }
   }
 }
 </script>

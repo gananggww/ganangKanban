@@ -30,7 +30,7 @@ export default {
     create () {
       this.$db.ref('task/backlog/').push({
         title: this.title,
-        desc: this.disc,
+        desc: this.desc,
         assign: this.assign
       })
       this.title = ''
@@ -39,7 +39,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$db.ref('task/backlog/'))
+    console.log(this.create())
   }
 }
 </script>
