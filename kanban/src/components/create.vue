@@ -39,7 +39,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.create())
+    // console.log(this.create())
   }
 }
 </script>
