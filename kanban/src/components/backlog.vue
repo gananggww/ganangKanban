@@ -12,7 +12,7 @@
       </div>
       <div class="extra content">
         <div class="author">
-          <button class="ui mini basic button" type="button">Delete</button>
+          <button class="ui mini basic button" type="button" @click="remove(all['.key'])">Delete</button>
           <button class="ui mini basic button" type="button">Todo</button>
         </div>
       </div>
@@ -48,8 +48,8 @@ export default {
       this.assign = ''
       // this.$db.ref('task/backlog/')
     },
-    remove () {
-      this.$db.ref('task/backlog/').remove()
+    remove (id) {
+      this.$db.ref(`task/backlog/${id}`).remove()
     }
   }
 }
