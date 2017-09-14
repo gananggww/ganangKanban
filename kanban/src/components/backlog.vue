@@ -13,7 +13,7 @@
       <div class="extra content">
         <div class="author">
           <button class="ui mini basic button" type="button" @click="remove(all['.key'])">Delete</button>
-          <button class="ui mini basic button" type="button">Todo</button>
+          <button class="ui mini basic button" type="button" @click="gotodo(all['.key'], all.title, all.desc, all.assign)">Todo</button>
         </div>
       </div>
     </div>
@@ -25,9 +25,6 @@
 export default {
   data () {
     return {
-      title: '',
-      desc: '',
-      assign: ''
       // backlog: this.$db.ref('task/backlog/')
     }
   },
@@ -37,16 +34,16 @@ export default {
     }
   },
   methods: {
-    gotodo () {
-      this.$db.ref('task/backlog/').push({
-        title: this.title,
-        desc: this.desc,
-        assign: this.assign
+    gotodo (id, title, desc, assign) {
+      this.$db.ref('task/todo/').push({
+        title: title,
+        desc: desc,
+        assign: assign
       })
       this.title = ''
       this.disc = ''
       this.assign = ''
-      // this.$db.ref('task/backlog/')
+      this.$db.ref(`task/backlog/${id}`).remove()
     },
     remove (id) {
       this.$db.ref(`task/backlog/${id}`).remove()

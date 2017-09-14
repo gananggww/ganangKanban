@@ -1,19 +1,19 @@
 <template>
   <div>
-    <div class="ui link card">
+    <div class="ui link card" v-for="all in backlog">
       <div class="content">
-        <div class="header">Cute Dog</div>
+        <div class="header">{{all.title}}</div>
         <div class="meta">
-          <span class="category">Animals</span>
+          <span class="category">{{all.assign}}</span>
         </div>
         <div class="description">
-          <p></p>
+          <p>{{all.desc}}</p>
         </div>
       </div>
       <div class="extra content">
         <div class="author">
-          <button class="ui mini basic button" type="button">Doing</button>
-          <button class="ui mini basic button" type="button">Delete</button>
+          <button class="ui mini basic button" type="button" @click="goDoing(all['.key'], all.title, all.desc, all.assign)">Doing</button>
+          <button class="ui mini basic button" type="button" @click="remove(all['.key'])">Delete</button>
         </div>
       </div>
     </div>
@@ -23,6 +23,27 @@
 
 <script>
 export default {
+  firebase: function () {
+    return {
+      backlog: this.$db.ref('task/done/')
+    }
+  },
+  methods: {
+    goDoing (id, title, desc, assign) {
+      this.$db.ref('task/doing/').push({
+        title: title,
+        desc: desc,
+        assign: assign
+      })
+      this.title = ''
+      this.disc = ''
+      this.assign = ''
+      this.$db.ref(`task/done/${id}`).remove()
+    },
+    remove (id) {
+      this.$db.ref(`task/done/${id}`).remove()
+    }
+  }
 }
 </script>
 
