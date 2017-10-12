@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="ui link card" v-for="all in backlog">
+    <div class="ui fluid link card" v-for="all in backlog">
       <div class="content">
         <div class="header">{{all.title}}</div>
         <div class="meta">

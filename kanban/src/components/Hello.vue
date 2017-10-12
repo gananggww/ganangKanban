@@ -1,10 +1,11 @@
 <template>
   <div class="ui container">
     <h1>TAMBAL-BAN</h1>
-    <div class="ui segment">
+    <button @click="showw()" type="button" class="ui fluid basic black button">Start Project</button>
+    <div v-if="shown === true" class="ui segment">
       <create></create>
     </div>
-    <div class="ui grid segment">
+    <div class="ui stackable grid four column container segment">
       <div class="four wide column">
         <div class="ui segment log">
           <h2>Back Log</h2>
@@ -23,7 +24,7 @@
         </div>
         <doing></doing>
       </div>
-      <div class="four wide column">
+      <div class="four wide  column">
         <div class="ui segment done">
           <h2>Done</h2>
         </div>
@@ -50,7 +51,16 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      shown: false
+    }
+  },
+  methods: {
+    showw () {
+      if (this.true === true) {
+        this.true = false
+      } else {
+        this.shown = true
+      }
     }
   }
 }

@@ -3,15 +3,15 @@
     <form class="ui form">
       <div class="field">
         <label>Judul</label>
-        <input type="text" name="first-name" v-model="title">
+        <input type="text" v-model="title">
       </div>
       <div class="field">
         <label>Deskripsi</label>
-        <input type="text" name="last-name" v-model="desc">
+        <input type="text" v-model="desc">
       </div>
       <div class="field">
         <label>Assign</label>
-        <input type="text" name="last-name" v-model="assign">
+        <input type="text" v-model="assign">
       </div>
       <button class="ui fluid button" type="submit" @click="create()">Submit</button>
     </form>
